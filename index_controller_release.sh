@@ -17,7 +17,7 @@ df_input_current_size=$(awk '/\/dev\/mapper\/ubuntu--vg-ubuntu--lv/ { print $5-0
       curl -k -s -u USERNAME:PASSWORD -XGET https://127.0.0.1:9200/_cat/indices/.ds-filebeat*?\&s=index > /var/indexcontroller/requested_indice_list.txt
       oldest_indice=$(awk 'NR==1 { print $3 }' /var/indexcontroller/requested_indice_list.txt)
 
-      #optional paranoid data validation to make sure funny stuff wont get at DELETE https://10.82.2.217:9200/<funnystuff>" request
+      #optional paranoid data validation to make sure funny stuff wont get at DELETE https://127.0.0.1:9200/<funnystuff>" request
       if [[ $oldest_indice == ".ds-filebeat-8.10.0-"* ]]; then
       echo "Validating indice: OK"
       echo "Sending delete request..."
